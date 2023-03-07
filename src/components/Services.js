@@ -1,4 +1,6 @@
 import { Title } from "./Title"
+import { services } from "../data"
+
 
 const Services = () => {
   return (
@@ -7,16 +9,21 @@ const Services = () => {
       <Title title='Our' subTitle='services' />
       
       <div className="section-center services-center">
-        <article className="service">
-          <span className="service-icon"><i className="fas fa-wallet fa-fw"></i></span>
+        {services.map((service) => {
+          const {id, icon, title, text} = service
+          return (
+        <article className="service" kez={id}>
+          <span className="service-icon"><i className={icon}></i></span>
           <div className="service-info">
-            <h4 className="service-title">saving money</h4>
+            <h4 className="service-title">{title}</h4>
             <p className="service-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Asperiores, officia.
+              {text}
             </p>
           </div>
         </article>
+          )
+
+        })}
 
         <article className="service">
           <span className="service-icon"><i className="fas fa-tree fa-fw"></i></span>
